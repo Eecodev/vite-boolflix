@@ -1,6 +1,12 @@
 <template>
     <div>
-
+        <div>
+            <h1>Boolflix</h1>
+        </div>
+        <div>
+            <input type="text">
+            <button>Search</button>
+        </div>
     </div>
 </template>
 
