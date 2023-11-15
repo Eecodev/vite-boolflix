@@ -1,7 +1,7 @@
 <template>
 
 
-  <MainComponent />
+  <MainComponent :movies="movie" :series="serie" />
 
 
 </template>
@@ -17,20 +17,21 @@ import MainComponent from './components/MainComponent.vue'
     },
     data(){
       return{
-        store,
+        movie: [],
+        serie: []
       }
     },
     methods:{
       getMovies(){
-      const movieurl = store.apiUrl + this.store.endPoint.movies;
+      const movieurl = store.apiUrl + this.store.endPoint.movie;
       axios.get(movieurl, {params: this.store.params}).then((res)=>{
       console.log(res.data.results);
-      this.store.movieList = res.data.results;
+      store.movieList = res.data.results;
       });
       const tvurl = store.apiUrl + this.store.endPoint.series;
       axios.get(tvurl, {params: this.store.params}).then((res)=>{
       console.log(res.data.results);
-      this.store.seriesList = res.data.results;
+      store.seriesList = res.data.results;
       });
     },
     created(){

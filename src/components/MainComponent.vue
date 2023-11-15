@@ -26,9 +26,19 @@ import {store} from '../data/store.js'
         components: {
 
         },
+        props: {
+            movies: {
+                type: Array,
+                default: () => [],
+            },
+            series:{
+                type: Array,
+                default: () => [],
+            }
+        },    
         data(){
             return{
-
+                store
             }
         }
     }
