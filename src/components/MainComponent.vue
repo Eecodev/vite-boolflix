@@ -14,6 +14,7 @@
       <div class="row">
         <div class="col-12 col-md-4 col-lg-3" v-for="(serie, index) in store.seriesList" :key="serie.id">
           {{ serie.name }}
+          <img :src="'https://image.tmdb.org/t/p/w300' + serie.backdrop_path" alt="">
         </div>
       </div>
     </section>
