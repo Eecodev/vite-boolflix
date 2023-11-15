@@ -1,13 +1,15 @@
 <template>
-    <div>
-        <div>
-            <h1>Boolflix</h1>
+    <header>
+        <div class="container d-flex justify-content-between align-items-center">
+            <div>
+                <h1>Boolflix</h1>
+            </div>
+            <div>
+                <input type="text">
+                <button>Search</button>
+            </div>
         </div>
-        <div>
-            <input type="text">
-            <button>Search</button>
-        </div>
-    </div>
+    </header>
 </template>
 
 <script>
@@ -17,5 +19,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    header{
+        background-color: red;
+    }
 </style>

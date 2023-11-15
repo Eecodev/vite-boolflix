@@ -1,7 +1,7 @@
 <template>
 
-
-  <MainComponent :movies="movie" :series="serie" />
+  <HeaderComponent/>
+  <MainComponent />
 
 
 </template>
@@ -9,20 +9,22 @@
 <script>
 import axios from 'axios'
 import {store} from './data/store.js'
+import HeaderComponent from './components/HeaderComponent.vue'
 import MainComponent from './components/MainComponent.vue'
   export default {
     name: 'App',
     components:{
       MainComponent,
+      HeaderComponent
     },
     data(){
       return{
-        movie: [],
-        serie: []
+        store
       }
     },
     methods:{
-      getMovies(){
+      getMoviesAndSeries(){
+      console.log('get movies');
       const movieurl = store.apiUrl + this.store.endPoint.movie;
       axios.get(movieurl, {params: this.store.params}).then((res)=>{
       console.log(res.data.results);
@@ -33,13 +35,13 @@ import MainComponent from './components/MainComponent.vue'
       console.log(res.data.results);
       store.seriesList = res.data.results;
       });
-    },
-    created(){
-      this.getMovies();
-      this.getSeries();
-    },
+    }
     
-  }
+    
+  },
+  created(){
+      this.getMoviesAndSeries();
+  },
 }
 </script>
 

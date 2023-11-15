@@ -5,6 +5,7 @@
       <div class="row">
         <div class="col-12 col-md-4 col-lg-3" v-for="(movie, index) in store.movieList" :key="movie.id">
           {{ movie.title }}
+          
         </div>
       </div>
     </section>
@@ -25,16 +26,6 @@ import {store} from '../data/store.js'
         name: 'MainComponent',
         components: {
 
-        },
-        props: {
-            movies: {
-                type: Array,
-                default: () => [],
-            },
-            series:{
-                type: Array,
-                default: () => [],
-            }
         },    
         data(){
             return{
