@@ -1,7 +1,15 @@
 <template>
 
   <HeaderComponent @search="getMoviesAndSeries"/>
-  <MainComponent/>
+  <main>
+    <section id="movie" class="container">
+    
+    </section>
+    <section id="tv" class="container">
+    
+  </section>
+  </main>
+  
 
 
 </template>
@@ -10,12 +18,12 @@
 import axios from 'axios'
 import {store} from './data/store.js'
 import HeaderComponent from './components/HeaderComponent.vue'
-import MainComponent from './components/MainComponent.vue'
+import CardComponent from './components/CardComponent.vue'
   export default {
     name: 'App',
     components:{
-      MainComponent,
-      HeaderComponent
+      HeaderComponent,
+      CardComponent
     },
     data(){
       return{
