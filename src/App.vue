@@ -1,6 +1,6 @@
 <template>
 
-  <HeaderComponent/>
+  <HeaderComponent @search="getMoviesAndSeries"/>
   <MainComponent/>
 
 
@@ -24,9 +24,6 @@ import MainComponent from './components/MainComponent.vue'
     },
     methods:{
       getMoviesAndSeries(){
-
-      store.movieList=[];
-      store.seriesList=[];
       const movieUrl = this.store.apiUrl + this.store.endPoint.movie;
       axios.get(movieUrl, {params: this.store.params}).then((res)=>{
       console.log(res.data.results);
@@ -42,7 +39,7 @@ import MainComponent from './components/MainComponent.vue'
     
   },
   created(){
-      this.getMoviesAndSeries();
+      // this.getMoviesAndSeries();
   },
 }
 </script>

@@ -5,7 +5,7 @@
                 <h1>Boolflix</h1>
             </div>
             <div>
-                <input type="text">
+                <input type="text" v-model="store.params.query" :keyup.enter="$emit('search')">
                 <button>Search</button>
             </div>
         </div>
@@ -13,8 +13,14 @@
 </template>
 
 <script>
+import {store} from '../data/store.js'
     export default {
-        
+        name: 'HeaderComponent',
+        data(){
+            return{
+                store
+            }
+        }
     }
 </script>
 

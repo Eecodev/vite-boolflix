@@ -5,7 +5,7 @@
       <div class="row">
         <div class="col-12 col-md-4 col-lg-3" v-for="(movie, index) in store.movieList" :key="movie.id">
           {{ movie.title }}
-          
+          <img :src="'https://image.tmdb.org/t/p/w300' + movie.backdrop_path" alt="">
         </div>
       </div>
     </section>
