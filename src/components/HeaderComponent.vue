@@ -20,6 +20,9 @@
 
 <style lang="scss" scoped>
     header{
-        background-color: red;
+        background-color: black;
+    }
+    h1{
+        color: red;
     }
 </style>
