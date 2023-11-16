@@ -2,12 +2,25 @@
 
   <HeaderComponent @search="getMoviesAndSeries"/>
   <main>
+
     <section id="movie" class="container">
-    
+      <h2>Movies</h2>
+      <div class="row gy-4">
+        <div class="col-12 col-md-4 col-lg-3" v-for="(movie, index) in store.movieList" :key="movie.id">
+          <CardComponent :title="movie.title" :vote="movie.vote_average" :language="movie.original_language" :image="movie.poster_path" :overview="movie.overview" />
+        </div>
+      </div>
     </section>
+
     <section id="tv" class="container">
-    
-  </section>
+      <h2>Tv</h2>
+      <div class="row gy-4">
+        <div class="col-12 col-md-4 col-lg-3" v-for="(serie, index) in store.seriesList" :key="tv.id">
+          <CardComponent :title="tv.title" :vote="tv.vote_average" :language="tv.original_language" :image="tv.poster_path" :overview="tv.overview" />
+        </div>
+      </div>
+    </section>
+
   </main>
   
 
