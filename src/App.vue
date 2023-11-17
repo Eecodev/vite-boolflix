@@ -61,12 +61,12 @@ import CardComponent from './components/CardComponent.vue'
         const popularMovieUrl = this.store.apiUrl + '/trending/movie/day?language=en-US';
         axios.get(popularMovieUrl, { params: this.store.params }).then((res) => {
           console.log('popular movies: ', res.data.results);
-          this.store.movieList = res.data.results;
+          store.movieList = res.data.results;
         });
         const popularTvUrl = this.store.apiUrl + '/trending/tv/day?language=en-US';
         axios.get(popularTvUrl, { params: this.store.params }).then((res) => {
           console.log('popular series: ', res.data.results);
-          this.store.seriesList = res.data.results;
+          store.seriesList = res.data.results;
         });
       }
     },
