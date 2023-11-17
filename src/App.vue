@@ -1,6 +1,6 @@
 <template>
 
-  <HeaderComponent @search="getMoviesAndSeries" @click=""/>
+  <HeaderComponent @search="getMoviesAndSeries"/>
   <main>
 
     <section id="movie" class="container">

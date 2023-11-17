@@ -1,13 +1,11 @@
 <template>
     <header>
-        <div class="container d-flex justify-content-between align-items-center">
-            <div>
+        <div class="container d-flex justify-content-between align-items-center p-2">
+            <a href="/">
                 <h1>Boolflix</h1>
-            </div>
+            </a>
             <div>
-                <!-- <input type="text" v-model="textInput" :keyup.enter="store.params.query = textInput">
-                <button @click="$emit('search')">Search</button> -->
-                <input type="text" v-model="textInput" :keyup.enter="store.params.query = textInput">
+                <input type="text" v-model="store.params.query" :keyup.enter="$emit('search')">
                 <button @click="$emit('search')">Search</button>
             </div>
         </div>
@@ -31,7 +29,11 @@ import {store} from '../data/store.js'
     header{
         background-color: black;
     }
+    a{
+        text-decoration: none;
+    }
     h1{
+        text-transform: uppercase;
         color: red;
     }
 </style>
