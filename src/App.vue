@@ -44,39 +44,41 @@ import CardComponent from './components/CardComponent.vue'
       }
     },
     methods:{
-      getMoviesAndSeries(){
-      const movieUrl = this.store.apiUrl + this.store.endPoint.movie;
-      axios.get(movieUrl, {params: this.store.params}).then((res)=>{
-      console.log(res.data.results);
-      this.store.movieList = res.data.results;
-      });
-      const tvUrl = store.apiUrl + this.store.endPoint.series;
-      axios.get(tvUrl, {params: this.store.params}).then((res)=>{
-      console.log(res.data.results);
-      this.store.seriesList = res.data.results;
-      });
-      },
-
-      getPopular() {
-      const popularMovieUrl = this.store.apiUrl + '/trending/movie/day?language=en-US';
-      axios.get(popularMovieUrl, { params: this.store.params }).then((res) => {
+        getMoviesAndSeries(){
+        const movieUrl = this.store.apiUrl + this.store.endPoint.movie;
+        axios.get(movieUrl, {params: this.store.params}).then((res)=>{
         console.log(res.data.results);
         this.store.movieList = res.data.results;
-      });
-      const popularTvUrl = this.store.apiUrl + '/trending/tv/day?language=en-US';
-      axios.get(popularTvUrl, { params: this.store.params }).then((res) => {
+        });
+        const tvUrl = store.apiUrl + this.store.endPoint.series;
+        axios.get(tvUrl, {params: this.store.params}).then((res)=>{
         console.log(res.data.results);
         this.store.seriesList = res.data.results;
-      });
-    }
-    
-    
-  },
-  created(){
-      this.getMoviesAndSeries();
-      this.getPopular();
-  },
-}
+        });
+      },
+
+        getPopular() {
+        const popularMovieUrl = this.store.apiUrl + '/trending/movie/day?language=en-US';
+        axios.get(popularMovieUrl, { params: this.store.params }).then((res) => {
+          console.log('popular movies: ', res.data.results);
+          this.store.movieList = res.data.results;
+        });
+        const popularTvUrl = this.store.apiUrl + '/trending/tv/day?language=en-US';
+        axios.get(popularTvUrl, { params: this.store.params }).then((res) => {
+          console.log('popular series: ', res.data.results);
+          this.store.seriesList = res.data.results;
+        });
+      }
+    },
+    computed(){
+        this.getMoviesAndSeries();
+        this.getPopular();
+    },
+    created(){
+        this.getMoviesAndSeries();
+        this.getPopular();
+    },
+  }
 </script>
 
 <style lang="scss" scoped>
