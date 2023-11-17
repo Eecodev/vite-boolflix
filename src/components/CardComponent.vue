@@ -19,6 +19,13 @@ import {store} from '../data/store.js'
         ],
         data() {
             return{
+                flags:[
+                  'en',
+                  'es',
+                  'fr',
+                  'it',
+                  'de'
+                ],
                 store,
                 imgPath: 'https://image.tmdb.org/t/p/w342',
                 front: true

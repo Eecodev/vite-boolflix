@@ -1,6 +1,6 @@
 <template>
 
-  <HeaderComponent @search="getMoviesAndSeries"/>
+  <HeaderComponent @search="getMoviesAndSeries" @click=""/>
   <main>
 
     <section id="movie" class="container">
@@ -15,8 +15,8 @@
     <section id="tv" class="container">
       <h2>Tv</h2>
       <div class="row gy-4">
-        <div class="col-12 col-md-4 col-lg-3" v-for="(serie, index) in store.seriesList" :key="tv.id">
-          <CardComponent :title="tv.title" :vote="tv.vote_average" :language="tv.original_language" :image="tv.poster_path" :overview="tv.overview" />
+        <div class="col-12 col-md-4 col-lg-3" v-for="(serie, index) in store.seriesList" :key="serie.id">
+          <CardComponent :title="serie.title" :vote="serie.vote_average" :language="serie.original_language" :image="serie.poster_path" :overview="serie.overview" />
         </div>
       </div>
     </section>
@@ -55,12 +55,26 @@ import CardComponent from './components/CardComponent.vue'
       console.log(res.data.results);
       this.store.seriesList = res.data.results;
       });
+      },
+
+      getPopular() {
+      const popularMovieUrl = this.store.apiUrl + '/trending/movie/day?language=en-US';
+      axios.get(popularMovieUrl, { params: this.store.params }).then((res) => {
+        console.log(res.data.results);
+        this.store.movieList = res.data.results;
+      });
+      const popularTvUrl = this.store.apiUrl + '/trending/tv/day?language=en-US';
+      axios.get(popularTvUrl, { params: this.store.params }).then((res) => {
+        console.log(res.data.results);
+        this.store.seriesList = res.data.results;
+      });
     }
     
     
   },
   created(){
-      // this.getMoviesAndSeries();
+      this.getMoviesAndSeries();
+      this.getPopular();
   },
 }
 </script>

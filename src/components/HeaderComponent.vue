@@ -5,8 +5,10 @@
                 <h1>Boolflix</h1>
             </div>
             <div>
-                <input type="text" v-model="store.params.query" :keyup.enter="$emit('search')">
-                <button>Search</button>
+                <!-- <input type="text" v-model="textInput" :keyup.enter="store.params.query = textInput">
+                <button @click="$emit('search')">Search</button> -->
+                <input type="text" v-model="textInput" :keyup.enter="store.params.query = textInput">
+                <button @click="$emit('search')">Search</button>
             </div>
         </div>
     </header>
@@ -18,7 +20,8 @@ import {store} from '../data/store.js'
         name: 'HeaderComponent',
         data(){
             return{
-                store
+                store,
+                textInput: ''
             }
         }
     }
