@@ -5,9 +5,13 @@
             <img :src="getImage" :alt="title" class="img-fluid poster d-block">
           </div>
           <div class="flip-card-back">
-            <h1>John Doe</h1>
-            <p>Architect & Engineer</p>
-            <p>We love that guy</p>
+            <h3>{{title}}</h3>
+            <p>
+              <img :src="getFlag" :alt="language + ' flag'" class="flag">
+            </p>
+            <p>
+              <i v-for="n in 5" :key="n" class="fa-star" :class="8n <= getVote ? 'fa-solid' : 'fa-regular'"></i>
+            </p>
           </div>
         </div>
       </div>
@@ -40,8 +44,11 @@ import {store} from '../data/store.js'
             
         },
         computed:{
-          getVote: function(){
+          getVote(){
             return Math.ceil(this.vote /2);
+          },
+          getFlag(){
+            let flag = `/src/assets/images/${this.language}.png`;
           },
           getImage(){
             return this.imgPath + this.image;
@@ -63,8 +70,6 @@ import {store} from '../data/store.js'
   border: 1px solid #f1f1f1;
   perspective: 1000px; 
 }
-
-/* This container is needed to position the front and back side */
 .flip-card-inner {
   position: relative;
   // width: 100%;
@@ -73,30 +78,19 @@ import {store} from '../data/store.js'
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
-
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
-
-/* Position the front and back side */
 .flip-card-front, .flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden; 
   backface-visibility: hidden;
 }
-
-/* Style the front side (fallback if image is missing) */
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
-}
-
-/* Style the back side */
 .flip-card-back {
-  color: white;
+
+  color: black;
   transform: rotateY(180deg);
 }
 </style>
